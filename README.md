@@ -1,40 +1,74 @@
-Gatling's SBT plugin demo
+
+Gatling's SBT plugin demo with docker
+
 =========================
 
-A simple project showing how to configure and use Gatling's SBT plugin to run Gatling simulations. 
+  
 
-This project uses SBT 1, which is available [here](https://www.scala-sbt.org/download.html).
+A simple project showing how to configure and use Gatling's SBT plugin to run Gatling simulations on docker container.
+
+
 
 Get the project
+
 ---------------
 
+  
+
 ```bash
-git clone https://github.com/gatling/gatling-sbt-plugin-demo.git && cd gatling-sbt-plugin-demo
+
+git clone https://github.com/DRKRahul/sbt-gatling-docker.git && cd sbt-gatling-docker
+
 ```
 
-Start SBT
+  
+
+Build image from Dockerfile
+
 ---------
+
 ```bash
-$ sbt
+
+$  docker-compose up -d --build
+
 ```
 
-Run all simulations
+  
+
+SSH into container and Run simulations
+
 -------------------
 
+  
+
 ```bash
-> Gatling / test
+
+$  docker exec -it test-gatling bash
+
 ```
+
+  
 
 Run a single simulation
+
 -----------------------
 
+  
+
 ```bash
-> Gatling / testOnly computerdatabase.BasicSimulation
+
+>  sbt gatling:testOnly computerdatabase/BasicSimulation
+
 ```
 
-List all extra tasks
---------------------
+Run all tests
+
+-----------------------
+
+  
 
 ```bash
-> tasks -v gatling
+
+>  sbt gatling:test
+
 ```
